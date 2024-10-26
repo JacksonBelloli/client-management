@@ -1,0 +1,15 @@
+{
+    "name": "Nome",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "address": "Endereço",
+    "city": "Cidade",
+    "state": "Estado",
+    "country": "País",
+    "zip code": "CEP",
+    "street": "Rua",
+    "number": "Número",
+    "complement": "Complemento",
+    "district": "Bairro",
+    "Client Information": "Informações do Cliente"
+}
