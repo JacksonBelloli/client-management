@@ -11,7 +11,7 @@ class UpdateClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,7 +28,7 @@ class UpdateClientRequest extends FormRequest
             'phone' => 'nullable|string',
             'zip_code' => 'nullable|string|max:9',
             'street' => 'nullable|string',
-            'number' => 'nullable|string',
+            'number' => 'nullable|integer',
             'complement' => 'nullable|string',
             'district' => 'nullable|string',
             'city' => 'nullable|string',

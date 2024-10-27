@@ -11,7 +11,7 @@ class StoreClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,7 +28,7 @@ class StoreClientRequest extends FormRequest
             'phone' => 'required|string',
             'zip_code' => 'required|string|max:9',
             'street' => 'required|string',
-            'number' => 'required|string',
+            'number' => 'required|integer',
             'complement' => 'nullable|string',
             'district' => 'required|string',
             'city' => 'required|string',
