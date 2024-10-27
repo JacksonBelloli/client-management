@@ -22,6 +22,25 @@ Baixe as dependências via composer:
 $ composer install
 ```
 
+## Executando a aplicação
+
+Para executar a aplicação temos 2 opções:
+
+### Docker
+
+* Necessário o docker & docker compose instalados
+
+Para subir o container docker execute o seguinte comando:
+```sh
+$ ./vendor/bin/sail up -d
+```
+### Assistente artisan
+
+Para rodar a aplicação usando o assistente do laravel use o seguinte comando:
+```sh
+$ php artisan serve
+```
+
 ## Migrations
 
 Para criar o banco e as tabelas execute o comando abaixo:
@@ -35,13 +54,6 @@ $ php artisan migrate
 Para criar um usuário admin execute o comando:
 ```sh
 $ php artisan make:filament-user
-```
-
-## Executando a aplicação
-
-Ao final com todas as dependências instaladas e banco criado execute:
-```sh
-$ php artisan serve
 ```
 
 ## Api
