@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Actions\Setters\SetAdressFromZipCode;
 use App\Filament\Resources\ClientResource\Pages;
 use App\Filament\Resources\ClientResource\RelationManagers;
+use App\Forms\Components\CpfCnpj;
 use App\Models\Client;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -35,7 +36,8 @@ class ClientResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                     ->label(__('name'))
                                     ->required(),
-                                Forms\Components\TextInput::make('cpf_cnpj')                                    
+                                CpfCnpj::make('cpf_cnpj')
+                                    ->rule('cpf_ou_cnpj')                                   
                                     ->required(),
                                 Forms\Components\TextInput::make('email')
                                     ->label(__('email'))
