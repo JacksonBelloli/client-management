@@ -123,26 +123,33 @@ class ClientResource extends Resource
                 TextColumn::make('email')
                     ->label(__('email'))
                     ->searchable()
-                    ->icon('heroicon-m-envelope'),
+                    ->icon('heroicon-m-envelope')
+                    ->sortable(),
                 TextColumn::make('phone')
                     ->label(__('phone'))
-                    ->searchable()
-                    ->icon('heroicon-o-phone'),
+                    ->icon('heroicon-o-phone')
+                    ->sortable(),
+                TextColumn::make('zip_code')
+                    ->label(__('zip code'))
+                    ->sortable(),
                 TextColumn::make('street')
                     ->label(__('street'))
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('number')
                     ->label(__('number'))
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('complement')
                     ->label(__('complement'))
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('district')
                     ->label(__('district'))
-                    ->searchable(),
+                    ->sortable(),
+                TextColumn::make('city')
+                    ->label(__('city'))
+                    ->sortable(),
                 TextColumn::make('state')
                     ->label(__('state'))
-                    ->searchable(),  
+                    ->sortable(),  
             ])
             ->filters([
                 //
