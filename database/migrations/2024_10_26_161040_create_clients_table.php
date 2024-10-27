@@ -23,7 +23,7 @@ return new class extends Migration
             /* Address info */
             $table->string('zip_code');
             $table->string('street');
-            $table->string('number');
+            $table->integer('number');
             $table->string('complement')->nullable();
             $table->string('city');
             $table->string('district');
