@@ -12,11 +12,14 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
 
 class ClientResource extends Resource
 {
@@ -36,8 +39,12 @@ class ClientResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                     ->label(__('name'))
                                     ->required(),
-                                CpfCnpj::make('cpf_cnpj')
-                                    ->rule('cpf_ou_cnpj')                                   
+                                Forms\Components\TextInput::make('cpf_cnpj')
+                                    ->rule('cpf_ou_cnpj')
+                                    ->mask(RawJs::make(<<<'JS'
+                                            $input.length >14 ? '99.999.999/9999-99' : '999.999.999-99'
+                                        JS)) 
+                                    ->unique()                             
                                     ->required(),
                                 Forms\Components\TextInput::make('email')
                                     ->label(__('email'))
@@ -45,6 +52,9 @@ class ClientResource extends Resource
                                     ->required(),
                                 Forms\Components\TextInput::make('phone')
                                     ->label(__('phone'))
+                                    ->mask(RawJs::make(<<<'JS'
+                                            $input.length >= 14 ? '(99) 99999-9999' : '(99) 9999-9999'
+                                        JS))
                                     ->tel()
                                     ->required(),
                 ]),
@@ -53,13 +63,18 @@ class ClientResource extends Resource
                     ->schema([
                             Forms\Components\TextInput::make('zip_code')
                                 ->label(__('zip code'))
+                                ->mask(RawJs::make(<<<'JS'
+                                            '99999-999' 
+                                        JS))
                                 ->afterStateUpdated(fn (Set $set, $state) => SetAdressFromZipCode::setAddress($state, $set))
+                                ->hint(new HtmlString(Blade::render('<x-filament::loading-indicator class="h-5 w-5" wire:loading wire:target="data.zip_code" />')))
                                 ->required()
-                                ->live(),
+                                ->live(debounce: 500),
                             Forms\Components\TextInput::make('street')
                                 ->label(__('street'))
                                 ->required()
-                                ->readOnly()
+                                ->readOnly(fn ($get) => $get('read_only'))
+                                ->extraInputAttributes(fn ($get) => $get('read_only') ? ['class' => 'bg-white dark:bg-gray-900'] : [])
                                 ->live(),
                             Forms\Components\TextInput::make('number')
                                 ->label(__('number'))
@@ -72,17 +87,20 @@ class ClientResource extends Resource
                             Forms\Components\TextInput::make('district')
                                 ->label(__('district'))
                                 ->required()
-                                ->readOnly()
+                                ->readOnly(fn ($get) => $get('read_only'))
+                                ->extraInputAttributes(fn ($get) => $get('read_only') ? ['class' => 'bg-white dark:bg-gray-900'] : [])
                                 ->live(),
                             Forms\Components\TextInput::make('city')
                                 ->label(__('city'))
                                 ->required()
-                                ->readOnly()
+                                ->readOnly(fn ($get) => $get('read_only'))
+                                ->extraInputAttributes(fn ($get) => $get('read_only') ? ['class' => 'bg-white dark:bg-gray-900'] : [])
                                 ->live(),
                             Forms\Components\TextInput::make('state')
                                 ->label(__('state'))
                                 ->required()
-                                ->readOnly()
+                                ->readOnly(fn ($get) => $get('read_only'))
+                                ->extraInputAttributes(fn ($get) => $get('read_only') ? ['class' => 'bg-white dark:bg-gray-900'] : [])
                                 ->live(),                            
                 ]),
             ]);
