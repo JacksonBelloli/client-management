@@ -16,7 +16,7 @@ return new class extends Migration
 
             /* Personal info */
             $table->string('name');
-            $table->string('cpf_cnpj');
+            $table->string('cpf_cnpj')->unique();
             $table->string('email');
             $table->string('phone');
 
