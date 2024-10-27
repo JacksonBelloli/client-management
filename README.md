@@ -13,13 +13,13 @@ Instalar pré-requisitos:
 Copie o .env
 
 ```sh
-$ cp .env.example .env
+ cp .env.example .env
 ```
 
 Baixe as dependências via composer:
 
 ```sh
-$ composer install
+ composer install
 ```
 
 ## Executando a aplicação
@@ -32,13 +32,13 @@ Para executar a aplicação temos 2 opções:
 
 Para subir o container docker execute o seguinte comando:
 ```sh
-$ ./vendor/bin/sail up -d
+ ./vendor/bin/sail up -d
 ```
 ### Assistente artisan
 
 Para rodar a aplicação usando o assistente do laravel use o seguinte comando:
 ```sh
-$ php artisan serve
+ php artisan serve
 ```
 
 ## Migrations
@@ -46,14 +46,14 @@ $ php artisan serve
 Para criar o banco e as tabelas execute o comando abaixo:
 
 ```sh
-$ php artisan migrate
+ php artisan migrate
 ```
 
 ## Filament
 
 Para criar um usuário admin execute o comando:
 ```sh
-$ php artisan make:filament-user
+ php artisan make:filament-user
 ```
 
 ## Api
