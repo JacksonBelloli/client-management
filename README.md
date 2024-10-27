@@ -37,9 +37,13 @@ Para criar um usuário admin execute o comando:
 $ php artisan make:filament-user
 ```
 
-# Executando a aplicação
+## Executando a aplicação
 
 Ao final com todas as dependências instaladas e banco criado execute:
 ```sh
 $ php artisan serve
 ```
+
+## Api
+
+* [Documentação da api](https://documenter.getpostman.com/view/5447206/2sAY4skQJc)
