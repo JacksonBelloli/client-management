@@ -39,7 +39,7 @@ $ php artisan make:filament-user
 
 # Executando a aplicação
 
-Ao final com todas as dependências instaladas execute:
+Ao final com todas as dependências instaladas e banco criado execute:
 ```sh
 $ php artisan serve
 ```
